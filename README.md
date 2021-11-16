@@ -5,7 +5,7 @@ This is the repository for CS441 final project.
 | S.No. | First Name | Last Name | UIN | Email |
 | :---: | :---: | :---: | :---: | :---: |
 |1 | Ragavee | Poosappagounder Kandavel | fill | rpoosa2@uic.edu |
-|2 | Smrithi | Balki | fill | sbalki3@uic.edu |
+|2 | Smrithi | Balki | 668488598 | sbalki3@uic.edu |
 |3 | Ramiya | Shree Seshiah | fill | rsesha3@uic.edu |
 |4 | Anandavignesh | Velangadu Sivakumar | 662139789 | avelan2@uic.edu |
 |5 | Lakshmanan | Meiyappan | fill | lmeiya2@uic.edu |
