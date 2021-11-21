@@ -1,0 +1,45 @@
+[debug] Packaging F:\CS441\Streaming Data Pipeline\target\scala-2.12\streaming-data-pipeline_2.12-0.1.jar ...
+[debug] Input file mappings:
+[debug] 	org
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org
+[debug] 	org\cs441
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441
+[debug] 	org\cs441\proj
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj
+[debug] 	org\cs441\proj\Driver$$anonfun$1.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\Driver$$anonfun$1.class
+[debug] 	org\cs441\proj\Driver$.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\Driver$.class
+[debug] 	org\cs441\proj\Driver.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\Driver.class
+[debug] 	org\cs441\proj\FileMonitor.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileMonitor.class
+[debug] 	org\cs441\proj\FileWatcher$$anon$1.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$$anon$1.class
+[debug] 	org\cs441\proj\FileWatcher$$anonfun$receive$1.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$$anonfun$receive$1.class
+[debug] 	org\cs441\proj\FileWatcher$.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$.class
+[debug] 	org\cs441\proj\FileWatcher$Message$.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$Message$.class
+[debug] 	org\cs441\proj\FileWatcher$Message$NewEvent$.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$Message$NewEvent$.class
+[debug] 	org\cs441\proj\FileWatcher$Message$NewEvent.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$Message$NewEvent.class
+[debug] 	org\cs441\proj\FileWatcher$Message$RegisterCallback$.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$Message$RegisterCallback$.class
+[debug] 	org\cs441\proj\FileWatcher$Message$RegisterCallback.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$Message$RegisterCallback.class
+[debug] 	org\cs441\proj\FileWatcher$Message$RemoveCallback$.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$Message$RemoveCallback$.class
+[debug] 	org\cs441\proj\FileWatcher$Message$RemoveCallback.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$Message$RemoveCallback.class
+[debug] 	org\cs441\proj\FileWatcher$Message.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher$Message.class
+[debug] 	org\cs441\proj\FileWatcher.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\FileWatcher.class
+[debug] 	org\cs441\proj\ThreadFileMonitor$$anon$1.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\ThreadFileMonitor$$anon$1.class
+[debug] 	org\cs441\proj\ThreadFileMonitor.class
+[debug] 	  F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes\org\cs441\proj\ThreadFileMonitor.class
+[debug] Done packaging.

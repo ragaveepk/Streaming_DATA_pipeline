@@ -1,0 +1,12 @@
+[debug] Created transactional ClassFileManager with tempDir = F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes.bak
+[debug] About to delete class files:
+[debug] 	Driver$.class
+[debug] 	Driver.class
+[debug] We backup class files:
+[debug] 	Driver$.class
+[debug] 	Driver.class
+[debug] Registering generated classes:
+[debug] 	Driver$$anonfun$1.class
+[debug] 	Driver$.class
+[debug] 	Driver.class
+[debug] Removing the temporary directory used for backing up class files: F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes.bak
