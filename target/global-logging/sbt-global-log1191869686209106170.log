@@ -1,7 +1,0 @@
-[debug] > Exec(run, None, None)
-[debug] Evaluating tasks: Compile / run
-[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
-[info] compiling 1 Scala source to F:\CS441\Streaming Data Pipeline\target\scala-2.12\classes ...
-[info] done compiling
-[success] Total time: 1 s, completed Nov 21, 2021 4:16:29 PM
-[debug] > Exec(idea-shell, None, None)
