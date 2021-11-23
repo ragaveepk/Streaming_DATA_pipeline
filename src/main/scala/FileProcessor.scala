@@ -10,10 +10,16 @@ import com.typesafe.config.ConfigFactory
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.kafka.common.serialization.StringSerializer
 
+import java.nio.file.Paths
 import scala.collection.mutable
 import scala.concurrent.{ExecutionContextExecutor, Future}
 import scala.sys.process._
 import scala.util.{Failure, Success}
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.util.stream.{Collectors, Stream}
+import scala.collection.JavaConverters._
 
 private class FileProcessor extends Actor {
   import FileProcessor._
@@ -27,26 +33,36 @@ private class FileProcessor extends Actor {
 
   override def receive = {
       case Message.FileModified(param) =>
-        handleModify(param)
-        passToKafka()
+        val count = handleModify(param)
+        passToKafka(param, count)
       case Message.FileCreated(param) =>
         handleCreate(param)
       case Message.FileDeleted(param) =>
         handleDelete(param)
     }
 
-  def passToKafka() = {
-    val states = Map("AL" -> "Alabama", "AK" -> "Alaska")
+  def passToKafka(file: String, count: Int) = {
+    println("Inside pass to kafka... " + count)
+    val base = System.getProperty("user.dir")
+    val path = Paths.get(base, "data", file)
+    try {
+      val stream = Files.lines(Paths.get(path.toString)).skip(count)
+      val l = stream.iterator().asScala.toList
+      val produce: Future[Done] =
+        Source(l)
+          .map((value) => new ProducerRecord[String, String]("test", file, value))
+          .runWith(Producer.plainSink(producerSettings))
 
-    val produce: Future[Done] =
-      Source(states)
-        .map((value) => new ProducerRecord[String, String]("test", value._1, value._2))
-        .runWith(Producer.plainSink(producerSettings))
-
-    produce onComplete  {
-      case Success(_) => println("Done"); system.terminate()
-      case Failure(err) => println(err.toString); system.terminate()
+      produce onComplete  {
+        case Success(_) => println("Done")
+        case Failure(err) => println(err.toString)
+      }
     }
+    catch {
+      case e: IOException =>
+        e.printStackTrace()
+    }
+    val states = Map("AL" -> "Alabama", "AK" -> "Alaska")
   }
 
   def countLines(file: String): Int = {
@@ -55,7 +71,7 @@ private class FileProcessor extends Actor {
     return "[0-9]+".r.findFirstIn(exec.split(":").last).get.toInt
   }
 
-  def handleModify(file: String): Unit = {
+  def handleModify(file: String): Int = {
     //val cmd = "find /v /c \"\" data\\test_log.txt"
     val count = countMap(file)
     val currCount = countLines(file)
@@ -69,7 +85,8 @@ private class FileProcessor extends Actor {
 
     val diff = currCount - count
     println(s"Hello there $file!")
-    println("ll " + diff  + " ll")
+    println("ll: " + diff  + " :ll")
+    return count
   }
 
   def handleCreate(file: String): Unit = {
