@@ -27,7 +27,6 @@
 15:15:59.324 [scala-execution-context-global-23] WARN  HelperUtils.Parameters$ - UZ$CLH@'auUqdB>`Ud<9om>^7&C`F-G.*66SBq?}qA:Xc,t<v=$s9U
 15:15:59.339 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - 8$I'M)R:9H~X/v]!5;Yo2*pPl8{%52/|
 19:42:47.388 [pool-127-thread-4] ERROR c.c.a.Utils.ObtainConfigReference$ - Failed to retrieve config entry MapReduce3 for reason com.typesafe.config.ConfigException$Missing: merge of system properties,application.conf @ file:/F:/CS441/LogGenMapReduce/target/scala-2.13/classes/application.conf: 1: No configuration setting found for key 'MapReduce3'
-15:15:59.356 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - ~Jo&m'4f&`o*2>RebO\bQO_M63_gBJa8\eQZx^60]DbU{4~4!A/`zC>e~}V;
 15:15:59.370 [scala-execution-context-global-23] WARN  HelperUtils.Parameters$ - 69r<%IX!4(hR-O@9&.>nIJ+r4YTZ"\;c'0!/!7~xB~UQzxroq2Om-Q
 15:15:59.384 [scala-execution-context-global-23] ERROR HelperUtils.Parameters$ - s-[.CTv|F0Q'\60=1wU$@\;*5Ge+E>8!Q**FN=*kqDUeAkb>RL).
 15:15:59.399 [scala-execution-context-global-23] WARN  HelperUtils.Parameters$ - itiG:GbE$$/KkFoA"G~xw"C~vk0"TmyDk.hfNt;+t%&aq@?bCP
@@ -37,10 +36,9 @@
 15:15:59.446 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - Ba7Od/YK8%1U}bT1k0^+*&1[:fdr4R1~BONm
 15:15:59.463 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - 3SE9sH&)^XAJ_T@G?izt]YINnc[<5D}mTV/y=w2/PkZ:|VC-_1cjH[b?f-
 15:15:59.478 [scala-execution-context-global-23] WARN  HelperUtils.Parameters$ - ipi0XL\r~#wYbH^>E2.sq'FHBnVjDhnE
-15:15:59.495 [scala-execution-context-global-23] WARN  HelperUtils.Parameters$ - bjS7Y[V.\[!)'v+6}.1^H.V)XBob|tlJ0j6nP^W6:#0V
+15:15:59.495 [scala-execution-context-
 15:15:59.509 [scala-execution-context-global-23] DEBUG HelperUtils.Parameters$ - !nL.9z^>132Dna>%XO6Y*iC,DY*y`P%$OvR?HlgK)Fn:jS!7
 15:15:59.524 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - $007{W>=awEv(D2MgRZ7}P1?-S*$*,Fo@$6C
-15:15:59.541 [scala-execution-context-global-23] WARN  HelperUtils.Parameters$ - zQNk'[bWY2J+{)
 15:15:59.556 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - {%$D9FH3t$F07HaE32@t<$
 15:15:59.572 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - G:(Hs!'pbJ;&YCk>6MPIW2|8ZxUG}.RT
 15:15:59.587 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - RA<pD&EM|L`kFKlH=.;"{pfiq(:Iw+![e':y)@8b

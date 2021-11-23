@@ -1,17 +1,20 @@
 package org.cs441.proj
 import akka.actor._
 
+import java.nio.file.StandardWatchEventKinds.{ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY}
 import java.nio.file.{Path, WatchEvent}
 import scala.collection.mutable
 
 class FileWatcher(file: Path) extends ThreadFileMonitor(file) with Actor {
   import FileWatcher._
 
+  val processor: ActorRef = context.actorOf(FileProcessor.props, "fileProcessor")
+
   // MultiMap from Events to registered callbacks
   protected[this] val callbacks = newMultiMap[Event, Callback]
 
   // Override the dispatcher from ThreadFileMonitor to inform the actor of a new event
-  override def dispatch(event: Event, file: Path) = self ! Message.NewEvent(event, file)
+  override def dispatch(event: Event, file: Path) = self ! FileWatcher.Message.NewEvent(event, file)
 
   // Override the onException from the ThreadFileMonitor
   override def onException(exception: Throwable) = self ! Status.Failure(exception)
@@ -23,13 +26,29 @@ class FileWatcher(file: Path) extends ThreadFileMonitor(file) with Actor {
   override def postStop() = super.interrupt()
 
   override def receive = {
-    case Message.NewEvent(event, target) if callbacks contains event =>
+    case Initialize => self ! when(events = ENTRY_CREATE, ENTRY_MODIFY, ENTRY_DELETE) {
+      case (ENTRY_CREATE, file) => {
+        println(s"$file got created")
+        processor ! FileProcessor.Message.FileCreated(file.toString)
+      }
+
+      case (ENTRY_MODIFY, file) => {
+        println(s"$file got modified")
+        processor ! FileProcessor.Message.FileModified(file.toString)
+      }
+
+      case (ENTRY_DELETE, file) => {
+        println(s"$file got deleted")
+        processor ! FileProcessor.Message.FileDeleted(file.toString)
+      }
+    }
+    case FileWatcher.Message.NewEvent(event, target) if callbacks contains event =>
       callbacks(event) foreach {f => f(event -> target)}
 
-    case Message.RegisterCallback(events, callback) =>
+    case FileWatcher.Message.RegisterCallback(events, callback) =>
       events foreach {event => callbacks.addBinding(event, callback)}
 
-    case Message.RemoveCallback(event, callback) =>
+    case FileWatcher.Message.RemoveCallback(event, callback) =>
       callbacks.removeBinding(event, callback)
   }
 
@@ -47,6 +66,8 @@ object FileWatcher {
     case class RegisterCallback(events: Seq[Event], callback: Callback) extends Message
     case class RemoveCallback(event: Event, callback: Callback) extends Message
   }
+
+  case object Initialize
   // util to create a RegisterCallback message for the actor
   def when(events: Event*)(callback: Callback): Message = {
     Message.RegisterCallback(events.distinct, callback)
