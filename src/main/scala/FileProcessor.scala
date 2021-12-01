@@ -37,6 +37,7 @@ private class FileProcessor extends Actor {
         passToKafka(param, count)
       case Message.FileCreated(param) =>
         handleCreate(param)
+        passToKafka(param, 0)
       case Message.FileDeleted(param) =>
         handleDelete(param)
     }

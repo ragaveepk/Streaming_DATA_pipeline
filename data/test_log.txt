@@ -10040,3 +10040,14 @@
 19:42:47.388 [pool-127-thread-4] ERROR c.c.a.Utils.ObtainConfigReference$ - Failed to retrieve config entry MapReduce3 for reason com.typesafe.config.ConfigException$Missing: merge of system properties,application.conf @ file:/F:/CS441/LogGenMapReduce/target/scala-2.13/classes/application.conf: 1: No configuration setting found for key 'MapReduce3'
 15:15:59.339 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - 8$I'M)R:9H~X/v]!5;Yo2*pPl8{%52/|
 19:42:47.388 [pool-127-thread-4] ERROR c.c.a.Utils.ObtainConfigReference$ - Failed to retrieve config entry MapReduce3 for reason com.typesafe.config.ConfigException$Missing: merge of system properties,application.conf @ file:/F:/CS441/LogGenMapReduce/target/scala-2.13/classes/application.conf: 1: No configuration setting found for key 'MapReduce3'
+15:15:59.710 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - h}Iu/.`P5@n:@QE\2$#HEbkAwh>/MKAG52
+15:15:59.726 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - c$,t;=EE17pJ!@
+15:15:59.741 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - 9+nSJx5g0&8P[i[9b^@rYB
+15:15:59.756 [scala-execution-context-global-23] WARN  HelperUtils.Parameters$ - ,]K{_II6#:tR)#A.VpfLP0{!J6Fs;O~`x0t}opR[oXornTky!EaK!1#]
+15:15:59.726 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - c$,t;=EE17pJ!@
+15:15:59.741 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - 9+nSJx5g0&8P[i[9b^@rYB
+15:15:59.756 [scala-execution-context-global-23] WARN  HelperUtils.Parameters$ - ,]K{_II6#:tR)#A.VpfLP0{!J6Fs;O~`x0t}opR[oXornTky!EaK!1#]
+19:42:47.388 [pool-127-thread-4] ERROR c.c.a.Utils.ObtainConfigReference$ - Failed to retrieve config entry MapReduce3 for reason com.typesafe.config.ConfigException$Missing: merge of system properties,application.conf @ file:/F:/CS441/LogGenMapReduce/target/scala-2.13/classes/application.conf: 1: No configuration setting found for key 'MapReduce3'
+15:15:59.046 [scala-execution-context-global-23] INFO  HelperUtils.Parameters$ - B?y&C"C5rsb:2037;f&|vM#x?z|Ny|&<44Z8B&rF1#&M
+19:42:47.388 [pool-127-thread-4] ERROR c.c.a.Utils.ObtainConfigReference$ - Failed to retrieve config entry MapReduce3 for reason com.typesafe.config.ConfigException$Missing: merge of system properties,application.conf @ file:/F:/CS441/LogGenMapReduce/target/scala-2.13/classes/application.conf: 1: No configuration setting found for key 'MapReduce3'
+15:15:59.077 [scala-execution-context-global-23] ERROR HelperUtils.Parameters$ - ihu}!A2]*07}|,lc
