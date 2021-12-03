@@ -67,9 +67,11 @@ private class FileProcessor extends Actor {
   }
 
   def countLines(file: String): Int = {
-    val cmd = "find /v /c \"\" data\\" + file
+    //val cmd = "find /v /c \"\" data\\" + file
+    val cmd = "wc -l data/" + file
     val exec = cmd.!!
-    return "[0-9]+".r.findFirstIn(exec.split(":").last).get.toInt
+    //return "[0-9]+".r.findFirstIn(exec.split(":").last).get.toInt
+    return "[0-9]+".r.findFirstIn(exec).get.toInt
   }
 
   def handleModify(file: String): Int = {
