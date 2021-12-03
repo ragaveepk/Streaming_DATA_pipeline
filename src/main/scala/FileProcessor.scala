@@ -28,6 +28,7 @@ private class FileProcessor extends Actor {
   implicit val ec: ExecutionContextExecutor = system.dispatcher
 
   val config = ConfigFactory.load()
+  val dir = config.getString("akka.actors.path1")
   val producerConfig = config.getConfig("akka.kafka.producer")
   val producerSettings = ProducerSettings(producerConfig, new StringSerializer, new StringSerializer)
 
@@ -44,11 +45,12 @@ private class FileProcessor extends Actor {
 
   def passToKafka(file: String, count: Int) = {
     println("Inside pass to kafka... " + count)
-    val base = System.getProperty("user.dir")
-    val path = Paths.get(base, "data", file)
+    //val base = System.getProperty("user.dir")
+    val path = Paths.get(dir, file)
     try {
       val stream = Files.lines(Paths.get(path.toString)).skip(count)
       val l = stream.iterator().asScala.toList
+      l.foreach(println);
       val produce: Future[Done] =
         Source(l)
           .map((value) => new ProducerRecord[String, String]("test", file, value))
@@ -63,13 +65,14 @@ private class FileProcessor extends Actor {
       case e: IOException =>
         e.printStackTrace()
     }
-    val states = Map("AL" -> "Alabama", "AK" -> "Alaska")
   }
 
   def countLines(file: String): Int = {
-    val cmd = "find /v /c \"\" data\\" + file
+    //val cmd = "find /v /c \"\" data\\" + file
+    val cmd = "wc -l " + dir + " " + file
     val exec = cmd.!!
-    return "[0-9]+".r.findFirstIn(exec.split(":").last).get.toInt
+    //return "[0-9]+".r.findFirstIn(exec.split(":").last).get.toInt
+    return "[0-9]+".r.findFirstIn(exec).get.toInt
   }
 
   def handleModify(file: String): Int = {
