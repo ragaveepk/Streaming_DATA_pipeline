@@ -28,7 +28,7 @@ private class FileProcessor extends Actor {
   implicit val ec: ExecutionContextExecutor = system.dispatcher
 
   val config = ConfigFactory.load()
-  val path = config.getString("akka.actors.path1")
+  val dir = config.getString("akka.actors.path1")
   val producerConfig = config.getConfig("akka.kafka.producer")
   val producerSettings = ProducerSettings(producerConfig, new StringSerializer, new StringSerializer)
 
@@ -46,7 +46,7 @@ private class FileProcessor extends Actor {
   def passToKafka(file: String, count: Int) = {
     println("Inside pass to kafka... " + count)
     //val base = System.getProperty("user.dir")
-    val path = Paths.get(path, file)
+    val path = Paths.get(dir, file)
     try {
       val stream = Files.lines(Paths.get(path.toString)).skip(count)
       val l = stream.iterator().asScala.toList
@@ -69,7 +69,7 @@ private class FileProcessor extends Actor {
 
   def countLines(file: String): Int = {
     //val cmd = "find /v /c \"\" data\\" + file
-    val cmd = "wc -l " + path + " " + file
+    val cmd = "wc -l " + dir + " " + file
     val exec = cmd.!!
     //return "[0-9]+".r.findFirstIn(exec.split(":").last).get.toInt
     return "[0-9]+".r.findFirstIn(exec).get.toInt
