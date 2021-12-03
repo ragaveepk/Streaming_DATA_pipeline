@@ -11,7 +11,7 @@ import org.apache.kafka.common.serialization.StringDeserializer
 import scala.concurrent.ExecutionContextExecutor
 import scala.util.{Failure, Success}
 
-object ConsumerApp extends App {
+object ConsumerApp {
   implicit val system: ActorSystem = ActorSystem("consumer-sys")
   implicit val mat: Materializer = ActorMaterializer()
   implicit val ec: ExecutionContextExecutor = system.dispatcher

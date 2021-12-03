@@ -2,14 +2,14 @@ package org.cs441.proj
 import akka.actor._
 
 import java.nio.file.StandardWatchEventKinds.{ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY}
-import java.nio.file.{Path, WatchEvent}
+import java.nio.file.{Files, Path, WatchEvent}
 import scala.collection.mutable
 
 class FileWatcher(file: Path) extends ThreadFileMonitor(file) with Actor {
   import FileWatcher._
 
   val processor: ActorRef = context.actorOf(FileProcessor.props, "fileProcessor")
-
+  //Files.lines()
   // MultiMap from Events to registered callbacks
   protected[this] val callbacks = newMultiMap[Event, Callback]
 

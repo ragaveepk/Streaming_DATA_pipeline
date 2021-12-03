@@ -49,6 +49,7 @@ private class FileProcessor extends Actor {
     try {
       val stream = Files.lines(Paths.get(path.toString)).skip(count)
       val l = stream.iterator().asScala.toList
+      l.foreach(println);
       val produce: Future[Done] =
         Source(l)
           .map((value) => new ProducerRecord[String, String]("test", file, value))
@@ -63,7 +64,6 @@ private class FileProcessor extends Actor {
       case e: IOException =>
         e.printStackTrace()
     }
-    val states = Map("AL" -> "Alabama", "AK" -> "Alaska")
   }
 
   def countLines(file: String): Int = {
