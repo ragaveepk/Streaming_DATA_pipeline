@@ -76,9 +76,13 @@ object SparkAggregation extends App {
                           .reduce(SparkUtil.combinePartitions)
       
       logger.info("Aggregated counts: E:" + errorCount + " W:" + warnCount + " D:" + debugCount + " I:" + infoCount)
-
+      //      if (errorCount>threshold){
+//        HelperUtils.AwsEmailService.email(errorCount,warnCount)
+//      }
+     
       logger.info("Sending result to AWS Mail")
-      HelperUtils.AwsEmailService.email(errorCount)
+      HelperUtils.AwsEmailService.email(errorCount,warnCount)
+
     }
   }
 
