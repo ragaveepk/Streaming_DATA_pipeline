@@ -15,7 +15,7 @@ object Driver {
     // initialize the actor instance
     val system = ActorSystem("mySystem")
     val config = ConfigFactory.load()
-    val path = config.getString("akka.actors.path1")
+    val path = config.getString("akka.actors.path2")
 
     val watcher = system.actorOf(Props(new FileWatcher(Paths.get(path))))
 

@@ -11,17 +11,21 @@ import org.apache.kafka.common.serialization.StringDeserializer
 import scala.concurrent.ExecutionContextExecutor
 import scala.util.{Failure, Success}
 
-object ConsumerApp {
+object ConsumerApp extends App {
   implicit val system: ActorSystem = ActorSystem("consumer-sys")
   implicit val mat: Materializer = ActorMaterializer()
   implicit val ec: ExecutionContextExecutor = system.dispatcher
 
   val config = ConfigFactory.load()
   val consumerConfig = config.getConfig("akka.kafka.consumer")
-  val consumerSettings = ConsumerSettings(consumerConfig, new StringDeserializer, new StringDeserializer)
+  val consumerSettings = ConsumerSettings(consumerConfig,
+    new StringDeserializer,
+    new StringDeserializer
+  ).withProperty("security.protocol", "SSL")
+    .withProperty("ssl.truststore.location", "/tmp/kafka.client.truststore.jks")
 
   val consume = Consumer
-    .plainSource(consumerSettings, Subscriptions.topics("test"))
+    .plainSource(consumerSettings, Subscriptions.topics("AWSKafkaTutorialTopic"))
     .runWith(Sink.foreach(println))
 
   consume onComplete  {

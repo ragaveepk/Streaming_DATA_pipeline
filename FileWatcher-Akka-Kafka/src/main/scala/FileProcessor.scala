@@ -30,7 +30,12 @@ private class FileProcessor extends Actor {
   val config = ConfigFactory.load()
   val dir = config.getString("akka.actors.path1")
   val producerConfig = config.getConfig("akka.kafka.producer")
-  val producerSettings = ProducerSettings(producerConfig, new StringSerializer, new StringSerializer)
+  val producerSettings = ProducerSettings(
+    producerConfig,
+    new StringSerializer,
+    new StringSerializer
+  ).withProperty("security.protocol", "SSL")
+    .withProperty("ssl.truststore.location", "/tmp/kafka.client.truststore.jks")
 
   override def receive = {
       case Message.FileModified(param) =>
@@ -53,7 +58,7 @@ private class FileProcessor extends Actor {
       l.foreach(println);
       val produce: Future[Done] =
         Source(l)
-          .map((value) => new ProducerRecord[String, String]("test", file, value))
+          .map((value) => new ProducerRecord[String, String]("AWSKafkaTutorialTopic", file, value))
           .runWith(Producer.plainSink(producerSettings))
 
       produce onComplete  {
@@ -69,7 +74,7 @@ private class FileProcessor extends Actor {
 
   def countLines(file: String): Int = {
     //val cmd = "find /v /c \"\" data\\" + file
-    val cmd = "wc -l " + dir + " " + file
+    val cmd = "wc -l " + dir + "/" + file
     val exec = cmd.!!
     //return "[0-9]+".r.findFirstIn(exec.split(":").last).get.toInt
     return "[0-9]+".r.findFirstIn(exec).get.toInt
@@ -88,8 +93,8 @@ private class FileProcessor extends Actor {
     // TODO: Pass the lines read to kafka stream
 
     val diff = currCount - count
-    println(s"Hello there $file!")
-    println("ll: " + diff  + " :ll")
+    //println(s"Hello there $file!")
+    //println("ll: " + diff  + " :ll")
     return count
   }
 

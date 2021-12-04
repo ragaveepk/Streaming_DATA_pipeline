@@ -16,6 +16,14 @@ import java.util.UUID
 import HelperUtils.{Constants, SparkUtil, CreateLogger, ObtainConfigReference}
 import HelperUtils.Constants.{sparkConfig, kafkaConfig}
 
+/** 
+* SparkAggregation
+* 
+* Functionality:
+* - Connect to Kafka Stream
+* - Aggregate the data using Spark
+* - Send notification to the stakeholders about the warn and errors in the logs
+*/
 class SparkAggregation
 object SparkAggregation extends App {
   val logger = CreateLogger(classOf[SparkAggregation])
@@ -34,7 +42,8 @@ object SparkAggregation extends App {
     Seconds(sparkConfig.getInt(Constants.SPARK_STREAMING_WINDOW_DURATION))
   )
 
-  logger.info("Create new Kafka Configuration with Kafka Params")
+  // Create Kafka Params
+  logger.info("Create new Kafka Params")
   val kafkaParams = Map[String, Object](
     ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> kafkaConfig.getString(Constants.KAFKA_BROKER),
     ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
@@ -80,7 +89,7 @@ object SparkAggregation extends App {
   // Start the Streaming Context.
   logger.info("Starting Spark Streaming Context")
   streamingContext.start()
+  // Keep the streaming alive until its manually stopped
   streamingContext.awaitTermination()
-  logger.info("Spark Streaming Context has been terminated")
-  
+  logger.info("Spark Streaming Context has been terminated")  
 }
