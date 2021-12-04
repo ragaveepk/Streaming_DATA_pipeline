@@ -58,7 +58,7 @@ private class FileProcessor extends Actor {
       l.foreach(println);
       val produce: Future[Done] =
         Source(l)
-          .map((value) => new ProducerRecord[String, String]("test", file, value))
+          .map((value) => new ProducerRecord[String, String]("AWSKafkaTutorialTopic", file, value))
           .runWith(Producer.plainSink(producerSettings))
 
       produce onComplete  {
