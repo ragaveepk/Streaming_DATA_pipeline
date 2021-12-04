@@ -44,7 +44,7 @@ cd Cloud-Computing---Streaming-Data-Pipeline
 cd Kafka-Spark-AWSEmail
 ```
 
-**Step 4:**
+**Step 2:**
 
 Update the following configurations in the `application.config`
 
