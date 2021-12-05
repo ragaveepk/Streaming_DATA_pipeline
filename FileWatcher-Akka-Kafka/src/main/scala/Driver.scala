@@ -7,7 +7,6 @@ import java.nio.file.Paths
 import java.nio.file.StandardWatchEventKinds.{ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY}
 
 object Driver {
-
   def main(args: Array[String]): Unit = {
     import FileWatcher._
 

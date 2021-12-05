@@ -116,8 +116,8 @@ object FileProcessor {
   // “messages” that FileProcessor can handle
   sealed trait Message
   object Message {
-    final case class FileModified(param: String) extends Message
-    final case class FileCreated(param: String) extends Message
-    final case class FileDeleted(param: String) extends Message
+    final case class FileModified(file: String, fileNumber: String) extends Message
+    final case class FileCreated(file: String, fileNumber: String) extends Message
+    final case class FileDeleted(file: String, fileNumber: String) extends Message
   }
 }
