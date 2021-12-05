@@ -28,7 +28,7 @@ private class FileProcessor extends Actor {
   implicit val ec: ExecutionContextExecutor = system.dispatcher
 
   val config = ConfigFactory.load()
-  val dir = config.getString("akka.actors.path1")
+  val dir = config.getString("akka.actors.path")
   val producerConfig = config.getConfig("akka.kafka.producer")
   val producerSettings = ProducerSettings(
     producerConfig,
@@ -38,20 +38,20 @@ private class FileProcessor extends Actor {
     .withProperty("ssl.truststore.location", "/tmp/kafka.client.truststore.jks")
 
   override def receive = {
-      case Message.FileModified(param) =>
-        val count = handleModify(param)
-        passToKafka(param, count)
-      case Message.FileCreated(param) =>
-        handleCreate(param)
-        passToKafka(param, 0)
-      case Message.FileDeleted(param) =>
-        handleDelete(param)
-    }
+      case Message.FileModified(file, fileNumber) =>
+      val count = handleModify(file, fileNumber)
+      passToKafka(file, fileNumber, count)
+    case Message.FileCreated(file, fileNumber) =>
+      handleCreate(file, fileNumber)
+      passToKafka(file, fileNumber, 0)
+    case Message.FileDeleted(file, fileNumber) =>
+      handleDelete(file, fileNumber)
+  }
 
-  def passToKafka(file: String, count: Int) = {
+  def passToKafka(file: String, fileNumber: String, count: Int) = {
     println("Inside pass to kafka... " + count)
     //val base = System.getProperty("user.dir")
-    val path = Paths.get(dir, file)
+    val path = Paths.get(dir + fileNumber, file)
     try {
       val stream = Files.lines(Paths.get(path.toString)).skip(count)
       val l = stream.iterator().asScala.toList
@@ -72,18 +72,18 @@ private class FileProcessor extends Actor {
     }
   }
 
-  def countLines(file: String): Int = {
+  def countLines(file: String, fileNumber: String): Int = {
     //val cmd = "find /v /c \"\" data\\" + file
-    val cmd = "wc -l " + dir + "/" + file
+    val cmd = "wc -l " + dir + fileNumber + "/" + file
     val exec = cmd.!!
     //return "[0-9]+".r.findFirstIn(exec.split(":").last).get.toInt
     return "[0-9]+".r.findFirstIn(exec).get.toInt
   }
 
-  def handleModify(file: String): Int = {
+  def handleModify(file: String, fileNumber: String): Int = {
     //val cmd = "find /v /c \"\" data\\test_log.txt"
     val count = countMap(file)
-    val currCount = countLines(file)
+    val currCount = countLines(file, fileNumber)
 
     if (currCount != count) {
       countMap(file) = currCount
@@ -98,14 +98,14 @@ private class FileProcessor extends Actor {
     return count
   }
 
-  def handleCreate(file: String): Unit = {
+  def handleCreate(file: String, fileNumber: String): Unit = {
     countMap += (file -> countLines(file))
-    println("Create done " + file + " count: " + countMap(file))
+    println("File " + file + " is created in folder " + fileNumber +  " with count: " + countMap(file))
   }
 
   def handleDelete(file: String): Unit = {
     countMap -= (file)
-    println("Delete done " + file + " count: " + countMap(file))
+    println("File " + file + " was deleted in folder " + fileNumber)
   }
 }
 

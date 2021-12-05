@@ -11,13 +11,18 @@ object Driver {
   def main(args: Array[String]): Unit = {
     import FileWatcher._
 
-    //val base = System.getProperty("user.dir")
-    // initialize the actor instance
+    val fileNumber = args(0)
+
+    args(0) match {
+      case "1" => val fileNumber = "1"
+      case _   => val fileNumber = "2"
+    }
+
     val system = ActorSystem("mySystem")
     val config = ConfigFactory.load()
-    val path = config.getString("akka.actors.path2")
+    val path = config.getString("akka.actors.path") + fileNumber
 
-    val watcher = system.actorOf(Props(new FileWatcher(Paths.get(path))))
+    val watcher = system.actorOf(Props(new FileWatcher(Paths.get(path), fileNumber)))
 
     watcher ! Initialize
   }

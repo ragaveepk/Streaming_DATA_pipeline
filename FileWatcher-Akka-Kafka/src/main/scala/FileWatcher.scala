@@ -5,7 +5,7 @@ import java.nio.file.StandardWatchEventKinds.{ENTRY_CREATE, ENTRY_DELETE, ENTRY_
 import java.nio.file.{Files, Path, WatchEvent}
 import scala.collection.mutable
 
-class FileWatcher(file: Path) extends ThreadFileMonitor(file) with Actor {
+class FileWatcher(file: Path, fileNumber : String) extends ThreadFileMonitor(file) with Actor {
   import FileWatcher._
 
   val processor: ActorRef = context.actorOf(FileProcessor.props, "fileProcessor")
@@ -29,17 +29,17 @@ class FileWatcher(file: Path) extends ThreadFileMonitor(file) with Actor {
     case Initialize => self ! when(events = ENTRY_CREATE, ENTRY_MODIFY, ENTRY_DELETE) {
       case (ENTRY_CREATE, file) => {
         println(s"$file got created")
-        processor ! FileProcessor.Message.FileCreated(file.toString)
+        processor ! FileProcessor.Message.FileCreated(file.toString, fileNumber)
       }
 
       case (ENTRY_MODIFY, file) => {
         println(s"$file got modified")
-        processor ! FileProcessor.Message.FileModified(file.toString)
+        processor ! FileProcessor.Message.FileModified(file.toString, fileNumber)
       }
 
       case (ENTRY_DELETE, file) => {
         println(s"$file got deleted")
-        processor ! FileProcessor.Message.FileDeleted(file.toString)
+        processor ! FileProcessor.Message.FileDeleted(file.toString, fileNumber)
       }
     }
     case FileWatcher.Message.NewEvent(event, target) if callbacks contains event =>
