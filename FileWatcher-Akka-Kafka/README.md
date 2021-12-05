@@ -26,7 +26,7 @@ src
 │       │   ├── FileMonitor.scala
 │       │   ├── FileProcessor.scala
 │       │   ├── FileWatcher.scala
-│       │   ├── ThreadFileMonitor.scala
+│       │   └── ThreadFileMonitor.scala
 │       └── Utils
 |       |   └── CreateLogger.scala
 │       ├── ConsumerApp.scala
