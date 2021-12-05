@@ -6,6 +6,8 @@ import com.typesafe.config.ConfigFactory
 import java.nio.file.Paths
 import java.nio.file.StandardWatchEventKinds.{ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY}
 
+class Driver
+
 object Driver {
   def main(args: Array[String]): Unit = {
     import FileWatcher._
