@@ -28,7 +28,7 @@ src
 │       │   ├── FileWatcher.scala
 │       │   ├── ThreadFileMonitor.scala
 │       └── Utils
-|       |   ├── CreateLogger.scala
+|       |   └── CreateLogger.scala
 │       ├── ConsumerApp.scala
 │       └── Driver.scala
 └── test
