@@ -1,4 +1,5 @@
 package org.cs441.proj
+package Actors
 
 import akka.Done
 import akka.actor.{Actor, ActorSystem, Props}
@@ -10,16 +11,13 @@ import com.typesafe.config.ConfigFactory
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.kafka.common.serialization.StringSerializer
 
-import java.nio.file.Paths
+import java.io.IOException
+import java.nio.file.{Files, Paths}
+import scala.collection.JavaConverters._
 import scala.collection.mutable
 import scala.concurrent.{ExecutionContextExecutor, Future}
 import scala.sys.process._
 import scala.util.{Failure, Success}
-import java.io.IOException
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.util.stream.{Collectors, Stream}
-import scala.collection.JavaConverters._
 
 private class FileProcessor extends Actor {
   import FileProcessor._

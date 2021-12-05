@@ -1,7 +1,8 @@
 package org.cs441.proj
+package Actors
 
-import java.nio.file.{Files, Path, WatchEvent, WatchKey}
 import java.nio.file.StandardWatchEventKinds.{ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY}
+import java.nio.file.{Files, Path, WatchEvent, WatchKey}
 import scala.collection.convert.ImplicitConversions.`iterator asScala`
 
 class ThreadFileMonitor(val root: Path) extends Thread with FileMonitor {

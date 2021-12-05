@@ -1,8 +1,10 @@
 package org.cs441.proj
+package Actors
+
 import akka.actor._
 
 import java.nio.file.StandardWatchEventKinds.{ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY}
-import java.nio.file.{Files, Path, WatchEvent}
+import java.nio.file.{Path, WatchEvent}
 import scala.collection.mutable
 
 class FileWatcher(file: Path, fileNumber : String) extends ThreadFileMonitor(file) with Actor {
