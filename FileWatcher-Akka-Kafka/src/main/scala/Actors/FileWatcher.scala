@@ -105,7 +105,7 @@ class FileWatcher(file: Path, fileNumber : String) extends ThreadFileMonitor(fil
  * The workflow starts here
  * */
 object FileWatcher {
-  // set up initial actor behaviours
+  // set up initial actor states and behaviours
   type Event = WatchEvent.Kind[Path]
   type Callback = PartialFunction[(Event, Path), Unit]
 

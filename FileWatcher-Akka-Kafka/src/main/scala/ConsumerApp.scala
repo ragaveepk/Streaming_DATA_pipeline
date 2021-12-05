@@ -30,7 +30,7 @@ object ConsumerApp {
   val config = ConfigFactory.load()
   val consumerConfig = config.getConfig("akka.kafka.consumer")
 
-  // create the ConsumerSettings
+  // create the Kafka ConsumerSettings
   val consumerSettings = ConsumerSettings(consumerConfig,
     new StringDeserializer,
     new StringDeserializer
