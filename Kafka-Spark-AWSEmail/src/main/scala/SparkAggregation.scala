@@ -32,7 +32,8 @@ object SparkAggregation extends App {
   val conf = new SparkConf()
                   .setAppName(sparkConfig.getString(Constants.SPARK_APP_NAME))
                   .setMaster(sparkConfig.getString(Constants.SPARK_MASTER))
-
+  conf.set("spark.executor.memory", "4g")
+  
   logger.info("Creating new Spark Context")
   val sc = new SparkContext(conf)
 
