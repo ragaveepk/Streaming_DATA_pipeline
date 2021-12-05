@@ -50,6 +50,8 @@ object SparkAggregation extends App {
     ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
     ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
     ConsumerConfig.GROUP_ID_CONFIG -> kafkaConfig.getString(Constants.KAFKA_GROUP_ID),
+    "security.protocol"->"SSL",
+    "ssl.truststore.location"-> "/tmp/kafka.client.truststore.jks",
   )
 
   logger.info("Create new Kafka Direct Stream")
