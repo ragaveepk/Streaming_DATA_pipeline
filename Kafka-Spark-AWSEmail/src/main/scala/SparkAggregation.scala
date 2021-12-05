@@ -13,7 +13,7 @@ import org.apache.spark.streaming.dstream.DStream
 import scala.collection.mutable.ListBuffer
 import java.util.UUID
 
-import HelperUtils.{Constants, SparkUtil, CreateLogger, ObtainConfigReference}
+import HelperUtils.{Constants, SparkUtil, CreateLogger, ObtainConfigReference, AwsEmailService}
 import HelperUtils.Constants.{sparkConfig, kafkaConfig}
 
 /** 
@@ -84,7 +84,8 @@ object SparkAggregation extends App {
 //      }
      
       logger.info("Sending result to AWS Mail")
-      HelperUtils.AwsEmailService.email(errorCount,warnCount)
+      AwsEmailService.email(errorCount,warnCount)
+      logger.info("After sent email")
 
     }
   }
