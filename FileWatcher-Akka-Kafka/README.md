@@ -4,12 +4,13 @@
 
 The first part of this project is `FileWatcher - Akka -Kafka` which aims to design and implement an actor-model service using Akka that ingests logfile generated data in real time and delivers it via an event-based service called Kafka
  
-Firstly, We create an actor system that is integrated with an event delivery system to enable notifications of real-time events, e.g., updates to log file; 
+Firstly, we create an actor system that is integrated with an event delivery system to enable notifications of real-time events, e.g., updates to the log file. 
 
-Secondly, We create a delivery mechanism of the obtained events of interest to Spark.
+Secondly, we create a delivery mechanism of the obtained events of interest to Spark, where further processing is done.
 
 ## Requirements:
 
+Working AWS account, IntelliJ IDEA 2021.2.1(Community Edition), jdk 1.8.0_191, Scala 2.12.12, sbt 1.5.5, Akka 2.5.17
 
 ## Project Structure:
 
@@ -22,19 +23,18 @@ src
 │   │   └── logback-test.xml
 │   └── scala
 │       ├── Actors
-│       │   ├── FileMonitor
-│       │   ├── FileProcessor
-│       │   ├── FileWatcher
-│       │   ├── ThreadFileMonitor
+│       │   ├── FileMonitor.scala
+│       │   ├── FileProcessor.scala
+│       │   ├── FileWatcher.scala
+│       │   ├── ThreadFileMonitor.scala
 │       └── Utils
-│       │   ├── ConsumerApp
-│       │   ├── Driver
+|       |   ├── CreateLogger.scala
+│       ├── ConsumerApp.scala
+│       └── Driver.scala
 └── test
     └── scala
         └── DataStreaming
-            ├── ConfigTestSuite.scala
-            ├── EmailTestSuite.scala
-            └── SparkTestSuite.scala
+            └── AkkaKafkaTestSuite.scala
 ```
 
 
@@ -114,13 +114,13 @@ Kafka provides three main functions to its users:
 **File Processor**
 
 - Based on the update message received from the File Watcher. The changes are observed here.
-- handleModify(file, fileNumber) : retrieves the new lines added to the file
-- handleCreate(file, fileNumber) : counts the number of files in the file created
-- handleDelete(file, fileNumber) : 
+- handleModify: retrieves the new lines added to the file, update the state and put them in Kafka stream
+- handleCreate: update the state for the new file created
+- handleDelete: delete the corresponding record from the current state
 - Once the updates are detected, the changes are sent to the kafka queue.
 
 **Kafka Queue**
-
+- We use akka-stream-kafka to put the updated logs from Akka to Kafka streams that is configured in the AWS MSK service
 
 ## EC2 Deployment
 
