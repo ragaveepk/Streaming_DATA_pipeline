@@ -84,8 +84,7 @@ object SparkAggregation extends App {
 //      }
      
       logger.info("Sending result to AWS Mail")
-      AwsEmailService.email(errorCount,warnCount)
-      logger.info("After sent email")
+      if(errorCount > 0 || warnCount > 0) AwsEmailService.email(errorCount,warnCount)
 
     }
   }
