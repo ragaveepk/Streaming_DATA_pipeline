@@ -3,9 +3,7 @@ package org.cs441.proj
 import akka.actor.{ActorSystem, Props}
 import com.typesafe.config.ConfigFactory
 import Utils.CreateLogger
-
-import org.cs441.proj.Actors.FileWatcher
-
+import Actors.FileWatcher
 import java.nio.file.Paths
 
 class Driver
