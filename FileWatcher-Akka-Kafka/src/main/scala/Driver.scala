@@ -10,8 +10,6 @@ object Driver {
   def main(args: Array[String]): Unit = {
     import FileWatcher._
 
-    val fileNumber = args(0)
-
     args(0) match {
       case "1" => val fileNumber = "1"
       case _   => val fileNumber = "2"
