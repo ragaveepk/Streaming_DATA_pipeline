@@ -10,18 +10,11 @@ import java.nio.file.{Path, WatchEvent}
  * */
 trait FileMonitor {
   val root: Path
-
   def start(): Unit
-
-  def onCreate(path: Path) = {}
-
-  def onModify(path: Path) = {}
-
-  def onDelete(path: Path) = {}
-
-  def onUnknownEvent(event: WatchEvent[_]) = {}
-
-  def onException(e: Throwable) = {}
-
-  def stop(): Unit
+  def onCreate(path: Path): Unit = {}
+  def onModify(path: Path): Unit = {}
+  def onDelete(path: Path): Unit = {}
+  def onUnknownEvent(event: WatchEvent[_]): Unit = {}
+  def onException(e: Throwable): Unit = {}
+  def stop(): Unit = {}
 }
