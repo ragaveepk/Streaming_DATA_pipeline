@@ -16,6 +16,8 @@ import com.typesafe.config.ConfigFactory
 import scala.collection.JavaConverters._
 
 class AwsEmailService
+object AwsEmailService{
+
   /**
    * This method sends email to list of destination email addresses
    * with number of error and warn logs.
