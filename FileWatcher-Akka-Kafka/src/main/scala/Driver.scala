@@ -15,7 +15,7 @@ class Driver
  * The workflow starts here
  * */
 object Driver {
-
+  // initialize logger
   val logger = CreateLogger(this.getClass)
 
   /** Main Method - Triggers the gRPC or REST server based on command line input
