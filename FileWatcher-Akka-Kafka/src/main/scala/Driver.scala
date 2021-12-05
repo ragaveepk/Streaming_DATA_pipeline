@@ -10,12 +10,14 @@ object Driver {
   def main(args: Array[String]): Unit = {
     import FileWatcher._
 
+    val fileNumber = if (args.length == 0) "1" else args(0)
+
 //    args(0) match {
 //      case "1" => val fileNumber = "1"
 //      case _   => val fileNumber = "2"
 //    }
 
-    val fileNumber = if (args(0) == "1") "1" else "2"
+    //val fileNumber = if (args(0) == "1") "1" else "2"
 
     val system = ActorSystem("mySystem")
     val config = ConfigFactory.load()
