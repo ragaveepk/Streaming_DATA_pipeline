@@ -60,7 +60,7 @@ object AwsEmailService{
 
     try {
       // customer is the client
-      val customer = AmazonSimpleEmailServiceClientBuilder.standard.withRegion(Regions.US_EAST_2).build()
+      val customer = AmazonSimpleEmailServiceClientBuilder.standard.withRegion(Regions.US_EAST_1).build()
       /*Create an email request with parameters
       * source email
       * list of destination email
