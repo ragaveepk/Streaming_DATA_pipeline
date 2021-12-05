@@ -16,5 +16,5 @@ trait FileMonitor {
   def onDelete(path: Path): Unit = {}
   def onUnknownEvent(event: WatchEvent[_]): Unit = {}
   def onException(e: Throwable): Unit = {}
-  def stop(): Unit = {}
+  def stop()
 }
