@@ -99,13 +99,13 @@ private class FileProcessor extends Actor {
   }
 
   def handleCreate(file: String, fileNumber: String): Unit = {
-    countMap += (file -> countLines(file))
+    countMap += (file -> countLines(file, fileNumber))
     println("File " + file + " is created in folder " + fileNumber +  " with count: " + countMap(file))
   }
 
-  def handleDelete(file: String): Unit = {
+  def handleDelete(file: String, fileNumber: String): Unit = {
     countMap -= (file)
-    println("File " + file + " was deleted in folder " + fileNumber)
+    //println("File " + file + " was deleted in folder " + fileNumber)
   }
 }
 
