@@ -33,8 +33,7 @@ src
 │       └── Driver.scala
 └── test
     └── scala
-        └── DataStreaming
-            └── AkkaKafkaTestSuite.scala
+        └── AkkaKafkaTestSuite.scala
 ```
 
 
