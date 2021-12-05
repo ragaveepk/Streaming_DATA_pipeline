@@ -3,6 +3,11 @@ package Actors
 
 import java.nio.file.{Path, WatchEvent}
 
+/**
+ * Trait [[FileMonitor]]
+ * The methods defined in this trait will be
+ * implemented by [[ThreadFileMonitor]]
+ * */
 trait FileMonitor {
   val root: Path
 

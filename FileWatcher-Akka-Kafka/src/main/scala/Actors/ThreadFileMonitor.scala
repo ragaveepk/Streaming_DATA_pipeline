@@ -5,22 +5,48 @@ import java.nio.file.StandardWatchEventKinds.{ENTRY_CREATE, ENTRY_DELETE, ENTRY_
 import java.nio.file.{Files, Path, WatchEvent, WatchKey}
 import scala.collection.convert.ImplicitConversions.`iterator asScala`
 
+/**
+ * Class [[ThreadFileMonitor]]
+ * Inherit [[Thread]] class and implement
+ * methods defined by the trait [[FileMonitor]]
+ * This class will create Threads for Akka actor
+ * */
 class ThreadFileMonitor(val root: Path) extends Thread with FileMonitor {
+  // create a Daemon and handle Exception
   setDaemon(true)
   setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler {
     override def uncaughtException(t: Thread, e: Throwable): Unit = onException(e)
   })
 
+  // create a new WatchService on the specified path
   val service = root.getFileSystem.newWatchService()
 
-  override def run() = Iterator.continually(service.take()).foreach(process)
+  /** Override run method from Thread
+   * @param None
+   * @return Unit
+   */
+  override def run(): Unit = {
+    Iterator.continually(service.take()).foreach(process)
+  }
 
-  override def interrupt() = {
+  /** Override interrupt method from Thread
+   * @param None
+   * @return Unit
+   */
+  override def interrupt(): Unit = {
+    // close the service and call super.interrupt()
     service.close()
     super.interrupt()
   }
 
-  override def start() = {
+  /** Override start method from Thread
+   * @param None
+   * @return Unit
+   */
+  override def start(): Unit = {
+    // check whether the specified path is a single file or a series of directories
+    // directories - recursively watch
+    // single file/folder - watch the file alone
     if (Files.isDirectory(root)) {
       watch(root, recursive=true)
     } else {
@@ -29,6 +55,11 @@ class ThreadFileMonitor(val root: Path) extends Thread with FileMonitor {
     super.start()
   }
 
+  /** watch method - register the thread to watch the file/directory for changes
+   * @param file: Path to be watched
+   * @param recursive: Boolean describing whether to watch recursively or not
+   * @return Unit
+   */
   protected[this] def watch(file: Path, recursive: Boolean=false): Unit = {
     if (Files.isDirectory(file)) {
       file.register(service, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY)
@@ -38,9 +69,20 @@ class ThreadFileMonitor(val root: Path) extends Thread with FileMonitor {
     }
   }
 
-  protected[this] def reactTo(target: Path) = Files.isDirectory(root) || (root == target)
+  /** reactTo method - helper method used by process()
+   * @param target: Path
+   * @return Boolean
+   */
+  protected[this] def reactTo(target: Path): Boolean = {
+    return Files.isDirectory(root) || (root == target)
+  }
 
-  protected[this] def process(key: WatchKey) = {
+  /** process method - process based on the event type
+   * @param key: WatchKey object
+   * @return Boolean
+   */
+  protected[this] def process(key: WatchKey): Boolean = {
+    // switch based on the type of event
     key.pollEvents() forEach {
       case event: WatchEvent[Path] =>
         val target = event.context()
@@ -52,9 +94,14 @@ class ThreadFileMonitor(val root: Path) extends Thread with FileMonitor {
         }
       case event => onUnknownEvent(event)
     }
-    key.reset()
+    return key.reset()
   }
 
+  /** dispatch method - describes what to do when a new event occurs
+   * @param eventType: EventType
+   * @param file: Path
+   * @return Unit
+   */
   def dispatch(eventType: WatchEvent.Kind[Path], file: Path): Unit = {
     eventType match {
       case ENTRY_CREATE => onCreate(file)
