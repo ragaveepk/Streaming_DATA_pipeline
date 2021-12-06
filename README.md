@@ -14,7 +14,7 @@ This is the repository for CS441 final project.
 
 The goal of this course project is to create a streaming data by designing and implementing an actor-model service using Akka that ingests log file generated data in real time and delivers it via an event-based service called Kafka to Spark for further processing.
 
-The project has been completed under the leadership by Ragavee Poosappagounder Kandavel. Ragavee, Ramiya Shree Seshiah, and Anandavignesh Velangadu Sivakumar worked on Log Generator, Akka actors and Kafka streams. Smrithi Balki and Lakshmanan Meiyappan worked on Kafka streams, Spark and Email notification service.
+The project has been completed under the leadership by Ragavee Poosappagounder Kandavel. Ragavee Poosappagounder Kandavel, Ramiya Shree Seshiah, and Anandavignesh Velangadu Sivakumar worked on setting up Log Generator in the EC2 instances, Akka actors to monitor log changes and AWS MSK Kafka streams. Smrithi Balki and Lakshmanan Meiyappan worked on AWS MSK Kafka streams, processing and aggregating the log file changes in Spark and finally, email notification service after processing.
 
 ## Documentation 
 
