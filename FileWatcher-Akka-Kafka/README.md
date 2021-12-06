@@ -36,6 +36,8 @@ src
         └── AkkaKafkaTestSuite.scala
 ```
 
+## Video Demo
+Here is the video link for the [Demo for Part-2 Kafka-Spark-AWS Email services](https://youtu.be/lj0DRL-SwMM)
 
 ## How to Run
 
