@@ -8,7 +8,7 @@ This is the repository for CS441 final project.
 |2 | Smrithi | Balki | 668488598 | sbalki3@uic.edu |
 |3 | Ramiya Shree | Seshiah | 660418618 | rsesha3@uic.edu |
 |4 | Anandavignesh | Velangadu Sivakumar | 662139789 | avelan2@uic.edu |
-|5 | Lakshmanan | Meiyappan | fill | lmeiya2@uic.edu |
+|5 | Lakshmanan | Meiyappan | 671997054 | lmeiya2@uic.edu |
 
 ## Introduction:
 
@@ -18,4 +18,4 @@ The project has been completed under the leadership by Ragavee Poosappagounder K
 
 [File Watcher- Akka - Kafka](https://github.com/gnzeleven/Cloud-Computing---Streaming-Data-Pipeline/blob/akka-kafka/FileWatcher-Akka-Kafka/README.md)
 
-[Spark - AWS Email notification](https://github.com/gnzeleven/Cloud-Computing---Streaming-Data-Pipeline/tree/spark/Kafka-Spark-AWSEmail)
+[Spark - AWS Email notification](https://github.com/gnzeleven/Cloud-Computing---Streaming-Data-Pipeline/blob/akka-kafka/Kafka-Spark-AWSEmail/README.md)
