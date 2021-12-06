@@ -26,4 +26,4 @@ The project has been completed under the leadership by Ragavee Poosappagounder K
 
 [File Watcher - Akka - Kafka]( https://youtu.be/4FTsKba67Bo)
 
-[Spark - AWS Email notification](https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html)
+[Spark - AWS Email notification](https://youtu.be/lj0DRL-SwMM)
