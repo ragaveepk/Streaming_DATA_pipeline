@@ -90,3 +90,7 @@ sbt test
 - Load sender and receiver information from `application.config` file. Make sure to verify sender and receiver email id's in AWS.
 - Constructs an email with the passed arguments, and sends it to the receivers.
 - Message content of the email can be modified from the config file.
+
+**Aggregated result sent as email Screenshot** 
+
+![](./assets/email.png)
