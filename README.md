@@ -16,6 +16,14 @@ The goal of this course project is to create a streaming data by designing and i
 
 The project has been completed under the leadership by Ragavee Poosappagounder Kandavel. Ragavee, Ramiya Shree Seshiah, and Anandavignesh Velangadu Sivakumar worked on Log Generator, Akka actors and Kafka streams. Smrithi Balki and Lakshmanan Meiyappan worked on Kafka streams, Spark and Email notification service.
 
+## Documentation 
+
 [File Watcher- Akka - Kafka](https://github.com/gnzeleven/Cloud-Computing---Streaming-Data-Pipeline/blob/akka-kafka/FileWatcher-Akka-Kafka/README.md)
 
 [Spark - AWS Email notification](https://github.com/gnzeleven/Cloud-Computing---Streaming-Data-Pipeline/blob/akka-kafka/Kafka-Spark-AWSEmail/README.md)
+
+## Video presentation 
+
+[File Watcher - Akka - Kafka]( https://youtu.be/4FTsKba67Bo)
+
+[Spark - AWS Email notification](https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html)
