@@ -123,6 +123,8 @@ Kafka provides three main functions to its users:
 **Kafka Queue**
 - We use akka-stream-kafka to put the updated logs from Akka to Kafka streams that is configured in the AWS MSK service
 
+Resource followed for creating MSK Cluster : [AWS MSK Cluster Documentation](https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html)
+
 ## EC2 Deployment
 
 EC2 is used to deploy multiple instance of the log file generation program and they are run for some period of time producing and storing log messages into log file in a shared drive at EFS(Elastic File System). 
