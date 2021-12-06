@@ -33,7 +33,8 @@ object SparkAggregation extends App {
                   .setAppName(sparkConfig.getString(Constants.SPARK_APP_NAME))
                   .setMaster(sparkConfig.getString(Constants.SPARK_MASTER))
   conf.set("spark.executor.memory", "4g")
-  
+  val threshold = 0
+
   logger.info("Creating new Spark Context")
   val sc = new SparkContext(conf)
 
@@ -84,7 +85,7 @@ object SparkAggregation extends App {
 //      }
      
       logger.info("Sending result to AWS Mail")
-      if(errorCount > 0 || warnCount > 0) AwsEmailService.email(errorCount,warnCount)
+      if(errorCount > threshold || warnCount > threshold) AwsEmailService.email(errorCount,warnCount)
 
     }
   }
