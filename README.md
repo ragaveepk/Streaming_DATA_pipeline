@@ -6,7 +6,7 @@ The goal of this project is to create a streaming data by designing and implemen
 
 ## Documentation 
 
-[File Watcher- Akka - Kafka](https://github.com/gnzeleven/Cloud-Computing---Streaming-Data-Pipeline/blob/akka-kafka/FileWatcher-Akka-Kafka/README.md)
+[File Watcher- Akka - Kafka](https://github.com/ragaveepk/Streaming_DATA_pipeline/blob/main/FileWatcher-Akka-Kafka/README.md)
 
-[Spark - AWS Email notification](https://github.com/gnzeleven/Cloud-Computing---Streaming-Data-Pipeline/blob/akka-kafka/Kafka-Spark-AWSEmail/README.md)
+[Spark - AWS Email notification](https://github.com/ragaveepk/Streaming_DATA_pipeline/blob/main/Kafka-Spark-AWSEmail/README.md)
 
