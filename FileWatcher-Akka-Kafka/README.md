@@ -36,16 +36,13 @@ src
         └── AkkaKafkaTestSuite.scala
 ```
 
-## Video Demo
-Here is the video link for the [Demo for Part-2 Kafka-Spark-AWS Email services](https://youtu.be/lj0DRL-SwMM)
-
 ## How to Run
 
 **Step 1:**
 
 Clone the repository and navigate inside the working directory
 ```
-git clone https://github.com/gnzeleven/Cloud-Computing---Streaming-Data-Pipeline.git
+git clone https://github.com/ragaveepk/Cloud-Computing---Streaming-Data-Pipeline.git
 cd Cloud-Computing---Streaming-Data-Pipeline
 cd FileWatcher-Akka-Kafka
 ```

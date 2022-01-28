@@ -1,6 +1,6 @@
 # Kafka -> Spark Aggregation -> AWS Email Notification
 
-Part 2 of the CS441 Final Project. Spark program connects to the Kafka stream, reads the messages and performs aggregation. Aggregated messages are sent as an email to the stakeholders if the ERROR/WARN messages matches a specific pattern.
+Part 2 of the  Project. Spark program connects to the Kafka stream, reads the messages and performs aggregation. Aggregated messages are sent as an email to the stakeholders if the ERROR/WARN messages matches a specific pattern.
 
 ## Specifications
 - Scala 2.12.12
