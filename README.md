@@ -10,8 +10,3 @@ The goal of this project is to create a streaming data by designing and implemen
 
 [Spark - AWS Email notification](https://github.com/gnzeleven/Cloud-Computing---Streaming-Data-Pipeline/blob/akka-kafka/Kafka-Spark-AWSEmail/README.md)
 
-## Video presentation 
-
-[File Watcher - Akka - Kafka]( https://youtu.be/4FTsKba67Bo)
-
-[Spark - AWS Email notification](https://youtu.be/lj0DRL-SwMM)
